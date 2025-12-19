@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход / Регистрация</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <h1>Todo App</h1>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('login')">Вход</button>
+                <button class="tab-btn" onclick="openTab('register')">Регистрация</button>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="loginForm" class="tab-content active">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+                <p class="error" id="loginError"></p>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="registerForm" class="tab-content">
+                <input type="text" id="regUsername" placeholder="Логин" required>
+                <input type="email" id="regEmail" placeholder="Email" required>
+                <input type="password" id="regPassword" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+                <p class="error" id="regError"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
