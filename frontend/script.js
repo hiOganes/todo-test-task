@@ -1,9 +1,9 @@
 // === КОНФИГУРАЦИЯ ===
-const API_BASE = 'http://127.0.0.1:8000/api/tasks/';
-const API_CREATE = 'http://127.0.0.1:8000/api/tasks/create/';
-const API_LOGIN = 'http://127.0.0.1:8000/api/token/';
-const API_REGISTER = 'http://127.0.0.1:8000/api/token/regiser/';
-const API_REFRESH = 'http://127.0.0.1:8000/api/token/refresh/';
+const API_BASE = 'http://localhost:8001/api/tasks/';
+const API_CREATE = 'http://localhost:8001/api/tasks/create/';
+const API_LOGIN = 'http://localhost:8001/api/token/';
+const API_REGISTER = 'http://localhost:8001/api/token/register/';
+const API_REFRESH = 'http://localhost:8001/api/token/refresh/';
 
 // Храним оба токена
 function getAccessToken() {
@@ -30,7 +30,7 @@ function checkAuth() {
         window.location.href = 'login.html';
     }
     if (access && isLoginPage) {
-        window.location.href = 'index.html';
+        window.location.href = '/';
     }
 }
 
@@ -77,7 +77,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     if (res.ok) {
         const data = await res.json();
         setTokens(data.access, data.refresh);
-        window.location.href = 'index.html';
+        window.location.href = '/';
     } else {
         const errData = await res.json().catch(() => ({}));
         errorEl.textContent = errData.detail || 'Неверный email или пароль';

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.views.generic import TemplateView
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -39,4 +39,13 @@ urlpatterns = [
          SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     # APPS
     path('api/tasks/', include('apps.tasks.urls', namespace='tasks')),
+    # FRONT
+    path('login.html', TemplateView.as_view(template_name='login.html')),
+    path('', TemplateView.as_view(template_name='index.html')),
+    path('script.js', TemplateView.as_view(
+        template_name='script.js', content_type='application/javascript')
+         ),
+    path('style.css', TemplateView.as_view(
+        template_name='style.css', content_type='text/css')
+         ),
 ]

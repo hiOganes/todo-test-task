@@ -11,8 +11,10 @@ from rest_framework_simplejwt.views import (
 
 from apps.accounts.serializers import RegisterSerializer
 from apps.accounts.models import User
+from apps.accounts import schema_examples
 
 
+@extend_schema(**schema_examples.registers_schema)
 class RegisterAPIView(APIView):
     serializer_class = RegisterSerializer
     model = User
@@ -37,3 +39,18 @@ class RegisterAPIView(APIView):
             data=serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+
+
+@extend_schema(**schema_examples.custom_token_obtain_pair_schema)
+class CustomTokenObtainPairView(TokenObtainPairView):
+    pass
+
+
+@extend_schema(**schema_examples.custom_token_refresh_schema)
+class CustomTokenRefreshView(TokenRefreshView):
+    pass
+
+
+@extend_schema(**schema_examples.custom_token_verify_schema)
+class CustomTokenVerifyView(TokenVerifyView):
+    pass
