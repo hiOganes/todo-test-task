@@ -66,11 +66,6 @@
  ```
  python backend/manage.py test .
  ```
-#### or
-### at the docker-compose.yaml file level, run the command:
- ```
- docker compose exec web python manage.py test .
- ```
 
 ## Table of Contents
 
